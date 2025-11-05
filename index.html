@@ -10,7 +10,8 @@
 	<script src="src/navbar.js" defer></script>
 </head>
 
-<body style="background-image: url('assets/icons/rickRoll.png'); background-size: cover; background-repeat: no-repeat;"> 
+
+<body>
 
 	<a href="#main-content" class="skip-link">Skip to main content</a>
 
@@ -24,14 +25,6 @@
 
 	<nav id="navbar">
 		<ul>
-		<li>
-			<button id="close-sidebar-button" onclick="closeSidebar()" aria-label="close sidebar">
-			<svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#c9c9c9">
-				<path
-				d="m480-444.62-209.69 209.7q-7.23 7.23-17.5 7.42-10.27.19-17.89-7.42-7.61-7.62-7.61-17.7 0-10.07 7.61-17.69L444.62-480l-209.7-209.69q-7.23-7.23-7.42-17.5-.19-10.27 7.42-17.89 7.62-7.61 17.7-7.61 10.07 0 17.69 7.61L480-515.38l209.69-209.7q7.23-7.23 17.5-7.42 10.27-.19 17.89 7.42 7.61 7.62 7.61 17.7 0 10.07-7.61 17.69L515.38-480l209.7 209.69q7.23 7.23 7.42 17.5.19 10.27-7.42 17.89-7.62 7.61-17.7 7.61-10.07 0-17.69-7.61L480-444.62Z" />
-			</svg>
-			</button>
-		</li>
 		<li class="home-li">
 			<a class="active-link" aria-current="page" href="index.html">
 				<svg style="padding: 0px 0px 4px 0px;" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"/></svg>
@@ -56,10 +49,120 @@
 
 	<div id="overlay" onclick="closeSidebar()" aria-hidden="true"></div>
 
-	<main>
-		<h1>Home</h1>
-		<p>Welcome SUGER to our website</p>
+	<main id="main-content">
+		<!-- Home layout: left (20%), center (60% with 2 stacked frames), right (20%) -->
+		<div class="home-layout">
+			<aside class="left-frame">
+				<div class="frame-inner"><img src="assets/images/pldc.png" alt="Left frame" loading="lazy"></div>
+			</aside>
+			<section class="center-column">
+				<div class="center-top frame-inner">
+					<div class="welcome-text">Chào mừng đến với web bán giáo trình</div>
+				</div>
+				<div class="center-bottom frame-inner"><img src="https://www.nxbctqg.org.vn/img_data/images/botailieu.jpg" alt="Center bottom" loading="lazy"></div>
+			</section>
+			<aside class="right-frame">
+				<div class="frame-inner"><img src="assets/images/nguyenvantaingu.png" alt="Right frame" loading="lazy"></div>
+			</aside>
+		</div>
 	</main>
+
+
+
+	<!-- Fullscreen viewer for outer frames -->
+	<div id="viewer-overlay" aria-hidden="true">
+		<div class="viewer-bg" id="viewerBg"></div>
+		<div class="viewer-content" role="dialog" aria-modal="true">
+			<button id="viewerClose" aria-label="Close viewer">×</button>
+			<img id="viewerImage" src="" alt="Full view">
+		</div>
+	</div>
+
+	<script>
+		// open overlay when clicking outer-frame images (left and right)
+		const viewerOverlay = document.getElementById('viewer-overlay');
+		const viewerImage = document.getElementById('viewerImage');
+		const viewerClose = document.getElementById('viewerClose');
+
+		function openViewer(src, alt) {
+			viewerImage.src = src;
+			viewerImage.alt = alt || 'Full view';
+			viewerOverlay.style.display = 'block';
+			viewerOverlay.setAttribute('aria-hidden', 'false');
+			document.body.style.overflow = 'hidden';
+		}
+
+		function closeViewer() {
+			viewerOverlay.style.display = 'none';
+			viewerOverlay.setAttribute('aria-hidden', 'true');
+			viewerImage.src = '';
+			document.body.style.overflow = '';
+		}
+
+		// Attach click handlers to left and right images
+		document.querySelectorAll('.left-frame .frame-inner img, .right-frame .frame-inner img').forEach(img => {
+			img.style.cursor = 'zoom-in';
+			img.addEventListener('click', () => openViewer(img.src, img.alt));
+		});
+
+		viewerClose.addEventListener('click', closeViewer);
+		// close when clicking background
+		document.getElementById('viewerBg').addEventListener('click', closeViewer);
+		// close on ESC
+		document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeViewer(); });
+
+		// --- Rotate outer images (left + right) every 3 seconds ---
+		(function setupOuterImageRotation(){
+			const leftImg = document.querySelector('.left-frame .frame-inner img');
+			const rightImg = document.querySelector('.right-frame .frame-inner img');
+			if (!leftImg || !rightImg) return; // nothing to do
+
+			const leftImages = [
+				'assets/images/pldc.png',
+				'assets/images/ltđt.png',
+				'assets/images/cnxhkh.png',
+				'assets/images/csdl.png'
+			];
+			const rightImages = [
+				'assets/images/nguyenvantaingu.png',
+				'assets/images/vodichthu.png',
+				'assets/images/toanroirac.png',
+				'assets/images/ktct.png'
+			];
+
+			let li = leftImages.indexOf(leftImg.src.split('/').slice(-1)[0]) >= 0 ? leftImages.indexOf(leftImg.src.split('/').slice(-1)[0]) : 0;
+			let ri = rightImages.indexOf(rightImg.src.split('/').slice(-1)[0]) >= 0 ? rightImages.indexOf(rightImg.src.split('/').slice(-1)[0]) : 0;
+
+			// Normalize indexes by filename (in case src is absolute)
+			function filename(src){ return src ? src.split('/').pop() : '' }
+			li = leftImages.findIndex(p => filename(leftImg.src) === filename(p)); if (li < 0) li = 0;
+			ri = rightImages.findIndex(p => filename(rightImg.src) === filename(p)); if (ri < 0) ri = 0;
+
+			function preload(src){ const i = new Image(); i.src = src; }
+
+			function rotateOnce(){
+				li = (li + 1) % leftImages.length;
+				ri = (ri + 1) % rightImages.length;
+				// preload then swap to reduce flicker
+				preload(leftImages[li]);
+				preload(rightImages[ri]);
+				leftImg.src = leftImages[li];
+				rightImg.src = rightImages[ri];
+			}
+
+			// start rotation every 3 seconds
+			const rotateInterval = 3000;
+			let rotTimer = setInterval(rotateOnce, rotateInterval);
+
+			// pause rotation while viewer is open to avoid sudden swaps
+			const observer = new MutationObserver(() => {
+				const open = viewerOverlay && viewerOverlay.getAttribute('aria-hidden') === 'false';
+				if (open) { clearInterval(rotTimer); rotTimer = null; }
+				else if (!rotTimer) { rotTimer = setInterval(rotateOnce, rotateInterval); }
+			});
+			observer.observe(viewerOverlay, { attributes: true, attributeFilter: ['aria-hidden'] });
+		})();
+	</script>
 
 </body>
 

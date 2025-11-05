@@ -1,5 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@…,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap');
+@import url('navbar.css');
+@import url('cart.css');
 /* blue theme */
 :root {
 	--primary-color: rgb(2, 27, 26);
@@ -23,10 +24,10 @@ html{
 body{
 	min-height: 100vh;
 	min-height: 100dvh;
-	background-color: var(--primary-color);
+	background-color: #871ae0;
 }
 main{
-  	padding: min(5em, 7%);
+  	padding: min(1em, 2%);
 }
 main p{
 	margin-top: .35em;
@@ -142,4 +143,136 @@ nav a.accent-link{
 	nav .home-li{
 		margin-right: unset;
 	}
+}/*globalStyle.css*/
+
+/* Home layout frames (moved from index.html) */
+
+.home-layout {
+    display: flex;
+    height: 80vh;
+    min-height: 400px;
+    gap: 30px;
+    padding: 0;
+    box-sizing: border-box;
+    align-items: flex-start; /* đẩy lên cao */
+    justify-content: center; /* ô giữa luôn ở trung tâm */
 }
+.left-frame, .right-frame {
+    width: 300px; /* hoặc 25% nếu bạn muốn tỷ lệ */
+    flex: 0 0 auto; /* không cho tự co giãn */
+}
+.center-column {
+    width: 40%; /* giữ tỉ lệ ô giữa */
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.center-top { display: flex; }
+
+
+/* Chỉnh center-bottom */
+.center-bottom {
+  flex: 1; /* vẫn chiếm không gian nhưng nhỏ hơn top */
+  max-height: 550px; /* giới hạn chiều cao của ảnh */
+  margin-top: -50px; /* kéo lên trên */
+  overflow: hidden; /* tránh tràn ra */
+}
+
+.center-bottom img {
+  width: auto; /* giữ tỉ lệ */
+  height: 100%; /* đầy khung */
+  object-fit: contain; /* ảnh không bị cắt */
+  width: 60%;
+}
+
+.frame-inner {
+	width: 100%;
+	height: 100%;
+	border: 4px solid #000;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: #fff;
+}
+
+.frame-inner img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+@media (max-width: 900px) {
+	.home-layout { flex-direction: column; padding: 12px; gap: 12px; }
+	.left-frame, .right-frame, .center-column { width: 100%; min-width: 0; }
+	.center-top, .center-bottom { height: auto; }
+}
+
+/* Viewer overlay styles */
+#viewer-overlay {
+	display: none; /* toggled via JS */
+	position: fixed;
+	inset: 0;
+	z-index: 10000;
+	align-items: center;
+	justify-content: center;
+}
+
+#viewer-overlay[aria-hidden="false"] { display: flex; }
+
+#viewer-overlay .viewer-bg {
+	position: absolute;
+	inset: 0;
+	background: rgba(0,0,0,0.85);
+}
+
+.viewer-content {
+	position: relative;
+	z-index: 10001;
+	max-width: 95vw;
+	max-height: 95vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#viewerImage {
+	max-width: 100%;
+	max-height: 100%;
+	object-fit: contain;
+	display: block;
+	border-radius: 4px;
+	box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+#viewerClose {
+	position: absolute;
+	top: -18px;
+	right: -18px;
+	background: #ffffff;
+	border-radius: 50%;
+	border: none;
+	width: 40px;
+	height: 40px;
+	font-size: 24px;
+	line-height: 1;
+	cursor: pointer;
+}
+
+#viewerClose:focus { outline: 3px solid #fff; }
+
+/* Welcome text inside center-top frame */
+.welcome-text {
+ width: 100%;           /* chiều ngang toàn bộ */
+    height: 100px;         /* chiều cao của ô, bạn chỉnh theo ý */
+    background-color: teal; /* màu nền */
+    color: white;           /* màu chữ */
+    font-size: 24px;        /* kích thước chữ */
+    
+    display: flex;          /* dùng flexbox */
+    justify-content: center; /* căn ngang giữa */
+    align-items: center;    /* căn dọc giữa */
+    text-align: center;     /* chữ nhiều dòng cũng căn giữa */
+    font-weight: bold; 
+}
+
+
+
