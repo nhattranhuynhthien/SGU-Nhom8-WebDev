@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login & Signup</title>
+  <link rel="stylesheet" href="../css/globalStyle.css" />
+  <link rel="stylesheet" href="../css/auth.css" />
+  <link rel="icon" type="image/x-icon" href="../assets/icons/jokerBentre.jpg" />
+  <script src="../src/auth.js" defer></script>
+</head>
+<body>
+
+  <!-- Sidebar toggle -->
+  <button id="open-sidebar-button" onclick="openSidebar()" aria-label="open sidebar" aria-expanded="false" aria-controls="navbar">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+      <path d="M3 12h18M3 6h18M3 18h18"/>
+    </svg>
+  </button>
+
+  <!-- Navigation bar -->
+  <nav id="navbar">
+    <ul>
+      <li>
+        <button id="close-sidebar-button" onclick="closeSidebar()" aria-label="close sidebar">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+            <path d="M18 6L6 18M6 6l12 12"/>
+          </svg>
+        </button>
+      </li>
+      <li class="home-li"><a href="../index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="market.html">Market</a></li>
+    </ul>
+  </nav>
+
+  <div id="overlay" onclick="closeSidebar()" aria-hidden="true"></div>
+
+  <!-- Auth container -->
+  <div class="auth-wrapper">
+    <div class="container" id="authContainer">
+      
+      <!-- Login Panel -->
+      <div class="form-panel" id="login-panel">
+        <h2>Welcome back!</h2>
+        <form id="loginForm">
+          <input type="text" id="loginUsername" placeholder="Username" required />
+          <input type="password" id="loginPassword" placeholder="Password" required />
+          <button type="submit">Sign In</button>
+        </form>
+        <p class="message" id="loginMessage"></p>
+      </div>
+
+      <!-- Signup Panel -->
+      <div class="form-panel" id="signup-panel">
+        <h2>Create Account</h2>
+        <form id="signupForm">
+          <input type="text" id="signupUsername" placeholder="Username" required />
+          <input type="email" id="signupEmail" placeholder="Email" required />
+          <input type="password" id="signupPassword" placeholder="Password" required />
+          <input type="password" id="confirmPassword" placeholder="Confirm Password" required />
+          <button type="submit">Sign Up</button>
+        </form>
+        <p class="message" id="signupMessage"></p>
+      </div>
+
+      <!-- Overlay Panel -->
+      <div class="overlay-panel">
+        <div class="overlay-content">
+          <h2>Welcome to UniShelf!</h2>
+          <p>To keep connected, please sign in or create an account</p>
+          <button class="toggle-btn" id="signupBtn" onclick="toggleForm('signup')">Sign Up</button>
+          <button class="toggle-btn" id="signinBtn" onclick="toggleForm('login')" style="display: none;">Sign In</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
+

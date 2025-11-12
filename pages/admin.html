@@ -9,129 +9,406 @@
     <link rel="stylesheet" href="../css/admin.css">
     <script src="../src/navbar.js" defer></script>
     <script type="module" src="../src/admin.js" defer></script>
+    
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <button id="open-sidebar-button" onclick="openSidebar()" aria-label="open sidebar" aria-expanded="false" aria-controls="navbar">
-        <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#c9c9c9"><path d="M165.13-254.62q-10.68 0-17.9-7.26-7.23-7.26-7.23-18t7.23-17.86q7.22-7.13 17.9-7.13h629.74q10.68 0 17.9 7.26 7.23 7.26 7.23 18t-7.23 17.87q-7.22 7.12-17.9 7.12H165.13Zm0-200.25q-10.68 0-17.9-7.27-7.23-7.26-7.23-17.99 0-10.74 7.23-17.87 7.22-7.13 17.9-7.13h629.74q10.68 0 17.9 7.27 7.23 7.26 7.23 17.99 0 10.74-7.23 17.87-7.22 7.13-17.9 7.13H165.13Zm0-200.26q-10.68 0-17.9-7.26-7.23-7.26-7.23-18t7.23-17.87q7.22-7.12 17.9-7.12h629.74q10.68 0 17.9 7.26 7.23 7.26 7.23 18t-7.23 17.86q-7.22 7.13-17.9 7.13H165.13Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#c9c9c9"><path d="M165.13-254.62q-10.68 0-17.9-7.26-7.23-7.26-7.23-18t7.23-17.86q7.22-7.13 17.9-7.13h629.74q10.68 0 17.9 7.26 7.23 7.26 7.23 18t-7.23 17.87q-7.22 7.12-17.9 7.12H165.13Zm0-200.25q-10.68 0-17.9-7.27-7.23-7.26-7.23-17.99 0-10.74 7.23-17.87 7.22-7.13 17.9-7.13h629.74q10.68 0 17.9 7.27 7.23 7.26 7.23 17.99 0-10.74-7.23 17.87-7.22 7.13-17.9 7.13H165.13Zm0-200.26q-10.68 0-17.9-7.26-7.23-7.26-7.23-18t7.23-17.87q7.22-7.12 17.9-7.12h629.74q10.68 0 17.9 7.26 7.23 7.26 7.23 18t-7.23 17.86q-7.22 7.13-17.9 7.13H165.13Z"/></svg>
     </button>
 
     <nav id="navbar">
         <ul>
         <li>
-            <button id="close-sidebar-button" onclick="closeSidebar()" aria-label="close sidebar">
+            <button id="close-sidebar-button" onclick="closeSidebar()" aria-label="close sidebar" style="display: none;">
             <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#c9c9c9"><path d="m480-444.62-209.69 209.7q-7.23 7.23-17.5 7.42-10.27.19-17.89-7.42-7.61-7.62-7.61-17.7 0-10.07 7.61-17.69L444.62-480l-209.7-209.69q-7.23-7.23-7.42-17.5-.19-10.27 7.42-17.89 7.62-7.61 17.7-7.61 10.07 0 17.69 7.61L480-515.38l209.69-209.7q7.23-7.23 17.5-7.42 10.27-.19 17.89 7.42 7.61 7.62 7.61 17.7 0 10.07-7.61 17.69L515.38-480l209.7 209.69q7.23 7.23 7.42 17.5.19 10.27-7.42 17.89-7.62 7.61-17.7 7.61-10.07 0-17.69-7.61L480-444.62Z"/></svg>
             </button>
         </li>
-        <li class="home-li">
+        <li class="home-li" style="display: none;">
             <a href="../index.html">
                 <svg style="padding: 0px 0px 4px 0px;" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"/></svg>
                 Home
             </a>
         </li>
-        <li>
+        <li style="display: none;">
             <a href="../pages/about.html">
                 <svg style="padding: 0px 0px 4px 0px;" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M40-160v-112q0-34 17.5-62.5T104-378q62-31 126-46.5T360-440q66 0 130 15.5T616-378q29 15 46.5 43.5T680-272v112H40Zm720 0v-120q0-44-24.5-84.5T666-434q51 6 96 20.5t84 35.5q36 20 55 44.5t19 53.5v120H760ZM360-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47Zm400-160q0 66-47 113t-113 47q-11 0-28-2.5t-28-5.5q27-32 41.5-71t14.5-81q0-42-14.5-81T544-792q14-5 28-6.5t28-1.5q66 0 113 47t47 113ZM120-240h480v-32q0-11-5.5-20T580-306q-54-27-109-40.5T360-360q-56 0-111 13.5T140-306q-9 5-14.5 14t-5.5 20v32Zm240-320q33 0 56.5-23.5T440-640q0-33-23.5-56.5T360-720q-33 0-56.5 23.5T280-640q0 33 23.5 56.5T360-560Zm0 320Zm0-400Z"/></svg>
                 About
             </a>
         </li>
-        <li>
+        <li style="display: none;">
             <a href="../pages/market.html">
                 <svg style="padding: 0px 0px 4px 0px;" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M160-720v-80h640v80H160Zm0 560v-240h-40v-80l40-200h640l40 200v80h-40v240h-80v-240H560v240H160Zm80-80h240v-160H240v160Zm-38-240h556-556Zm0 0h556l-24-120H226l-24 120Z"/></svg>
                 Market
             </a>
         </li>
-        <li><a class="accent-link" href="../pages/login.html">Login</a></li>
+        <li class="login-btn"><a  href="../pages/admin.html" id="login-btn">Login</a></li>
+        <li id="logout-btn" class="logout-btn">Đăng xuất</li>
         </ul>
     </nav>
     
     <div id="overlay" onclick="closeSidebar()" aria-hidden="true"></div>
 
+    <div class="login-container" id="login-container">
+		<h2>Admin login</h2>
+		<form id="loginForm">
+		<input type="text" id="username" placeholder="Username" required />
+		<input type="password" id="password" placeholder="Password" required />
+		<button type="submit">Login</button>
+		</form>
+		<p id="loginMessage"></p>
+ 	</div>
 
-    <div class="admin-layout">
+    <div class="admin-layout hidden" id="admin-wrapper">
         <div class="admin-sidebar">
             <ul class="admin-category-bar">
-            <li id="market-tab" class="active">Market Control</li>
-            <li id="accounts-tab">Accounts Control</li>
+                <li id="market-tab" class="active">Market Control</li>
+                <li id="accounts-tab">Accounts Control</li>
+                <li id="imports-tab">Import Control</li>
+                <li id="price-tab">Price Control</li>
+                <li id="orders-tab">Quản lý Đơn Hàng</li>
             </ul>
         </div>
+        
         <div class="admin-content">
             <h2>Admin Panel</h2>
             <div id="admin-section-content">
-            <p>Welcome to Market Control.</p></div>
+            <p>Welcome to Admin Control.</p></div>
+            
             <div class="admin-market" id="market">
                 <div class="top-list">
-                    <h2>List of products</h2>
-                        </div>
-                        <button class="add-product-bt">Add product</button>
-                        <table class="product-table">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Price</th>
-                                    <th>Image</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
+                    <h2>Danh sách sản phẩm</h2>
+                </div>
+                
+                <div class="admin-controls">
+                    <div class="control-group">
+                        <label for="category-select" style="margin-right: 10px;">Chọn danh mục:</label>
+                        <select id="category-select" style="padding: 5px;"></select>
+                        <input type="text" id="product-search-input" placeholder="Tìm theo tên hoặc ID sản phẩm...">
                     </div>
+                    <button class="add-product-bt">Thêm sản phẩm</button>
+                </div>
+
+                <div class="category-actions">
+                    <input type="text" id="new-category-name" placeholder="Nhập tên danh mục mới">
+                    <button id="add-category-btn">Thêm DM</button>
+                    <button id="delete-cat-btn">Xóa DM</button>
+                    <button id="edit-cat-btn">Sửa DM</button>
+                    <button id="toggle-category-btn">Ẩn/Hiện DM</button>
+                </div>
+                
+                <div class="table-wrapper">
+                    <table class="product-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Tên</th>
+                                <th>Giá</th>
+                                <th>Số lượng</th>
+                                <th>Ảnh</th>
+                                <th>Tùy chọn</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="pagination" id="product-pagination"></div>
+            </div>
+
             <div class="admin-accounts" id="accounts">
-                <div class="top-list"><h2>List of accounts</h2></div>
-                <button class="add-accounts-bt">Add accounts</button>
-                <table class="accounts-table">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Username</th>
-                            <th>Password</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
+                <div class="top-list"><h2>Danh sách tài khoản</h2></div>
+                
+                <div class="admin-controls">
+                    <input type="text" id="account-search-input" placeholder="Tìm theo username hoặc email...">
+                    <button id="add-account-btn" class="add-product-bt">Thêm tài khoản</button>
+                </div>
+
+                <div class="table-wrapper">
+                    <table class="accounts-table">
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>Username</th>
+                                <th>Email</th>
+                                <th>Trạng thái</th>
+                                <th>Tùy chọn</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="pagination" id="account-pagination"></div>
             </div>
+            
+            <div class="admin-imports" id="imports">
+                <div class="top-list">
+                    <h2>Danh sách phiếu nhập</h2>
+                </div>
+                
+                <div class="admin-controls">
+                    <input type="text" id="import-search-input" placeholder="Tìm theo ID, ngày, hoặc tên sản phẩm...">
+                    <button id="add-import-btn" class="add-product-bt">Thêm phiếu nhập mới</button>
+                </div>
+
+                <div class="table-wrapper">
+                    <table class="imports-table">
+                        <thead>
+                            <tr>
+                                <th>ID Phiếu</th>
+                                <th>Ngày Nhập</th>
+                                <th>Trạng Thái</th>
+                                <th>Sản phẩm nhập</th>
+                                <th>Tổng Sản Phẩm</th>
+                                <th>Hành Động</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            </tbody>
+                    </table>
+                </div>
+                <div class="pagination" id="import-pagination"></div>
+            </div>
+            
+            <div class="admin-price" id="price">
+                <div class="top-list">
+                    <h2>Price Control</h2>
+                </div>
+                
+                <div class="admin-controls">
+                    <div class="control-group">
+                        <label for="price-category-select" style="margin-right: 10px;">Chọn danh mục:</label>
+                        <select id="price-category-select" style="padding: 5px;"></select>
+                        <input type="text" id="price-search-input" placeholder="Tìm theo tên sản phẩm...">
+                    </div>
+                </div>
+
+                <div class="table-wrapper">
+                    <table class="price-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Sản phẩm</th>
+                                <th>Giá nhập</th>
+                                <th>Lợi nhuận</th>
+                                <th>Giá bán</th>
+                                <th>Sửa</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="pagination" id="price-pagination"></div>
+            </div>
+
+            <div class="admin-orders" id="orders">
+                <div class="top-list">
+                    <h2>Danh sách Đơn Hàng</h2>
+                </div>
+                
+                <div class="admin-controls">
+                    <input type="text" id="order-search-input" placeholder="Tìm theo ID, tên khách, hoặc trạng thái...">
+                </div>
+
+                <div class="table-wrapper">
+                    <table class="orders-table"> 
+                        <thead>
+                            <tr>
+                                <th>ID Đơn</th>
+                                <th>Ngày Đặt</th>
+                                <th>Khách Hàng</th>
+                                <th>Tổng Tiền</th>
+                                <th>Trạng Thái</th>
+                                <th>Hành Động</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            </tbody>
+                    </table>
+                </div>
+                <div class="pagination" id="order-pagination"></div> 
+            </div>
+
         </div> </div> <div id="addform" class="frm">
-        <div class="close-frm"><button id="close-pr-frm-btn" class="closef" aria-label="close form">&times;</button>
-        <h2>Add new Product</h2>
-        <form id="add-pr-frm">
-            <div class="form-group">
-                <label>Product name</label>
-                <input type="text" id="product-name" required>  
-            </div>
-            <div class="form-group">
-                <label>Product price</label>
-                <input type="text" id="product-price" required> 
-            </div>
-            <div class="form-group">
-                    <label for="product-image">Image URL:</label>
+        <div class="close-frm">
+            <button id="close-pr-frm-btn" class="closef" aria-label="close form">&times;</button>
+            
+            <h2 id="product-form-title">Thêm sản phẩm mới</h2>
+            
+            <form id="add-pr-frm">
+                <div class="form-group">
+                    <label for="product-id">ID sản phẩm</label>
+                    <input type="text" id="product-id" required>
+                </div>
+                <div class="form-group">
+                    <label for="product-name">Tên sản phẩm</label>
+                    <input type="text" id="product-name" required> 
+                </div>
+                
+                <div class="form-group">
+                    <label for="product-price">Giá sản phẩm</label>
+                    <input type="number" id="product-price" placeholder="Ví dụ: 45 (Không cần nhập $)" required> 
+                </div>
+
+                <div class="form-group">
+                    <label for="product-description">Mô tả sản phẩm</label>
+                    <textarea id="product-description" placeholder="Nhập mô tả sản phẩm..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="product-quantity">Số lượng</label>
+                    <input type="number" id="product-quantity" value="0" min="0" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="product-release-year">Năm phát hành</label>
+                    <input type="number" id="product-release-year" placeholder="Ví dụ: 2024" min="1900">
+                </div>
+
+                <div class="form-group">
+                    <label for="product-image">URL hình ảnh:</label>
                     <input type="text" id="product-image" value="../assets/images/rickRoll.png" required>
                 </div>
-                <button type="submit" class="submit-btn">Add product</button>
-        </form>
-        </div>
-    </div>
-    <div id="addAccountForm" class="frm">
-        <div class="close-frm">
-            <button id="close-acc-frm-btn" class="closef" aria-label="close form">&times;</button>
-            <h2>Add new Account</h2>
-            <form id="add-acc-frm">
-                <div class="form-group">
-                    <label for="account-username">Username</label>
-                    <input type="text" id="account-username" required>   
-                </div>
-                <div class="form-group">
-                    <label for="account-password">Password</label>
-                    <input type="text" id="account-password" required> 
-                </div>
-                <button type="submit" class="submit-btn">Add account</button>
+
+                <button type="submit" class="submit-btn" id="product-submit-btn">Thêm sản phẩm</button>
             </form>
         </div>
     </div>
     
+    <div id="AccountForm" class="frm">
+        <div class="close-frm">
+            <button id="close-acc-frm-btn" class="closef" aria-label="close form">&times;</button>
+            <h2 id="account-form-title">Add new Account</h2>
+            <form id="acc-frm">
+                <div class="form-group">
+                    <label for="account-username">Username</label>
+                    <input type="text" id="account-username" required>   
+                </div>
+                
+                <div class="form-group">
+                    <label for="account-password">Password</label>
+                    <input type="password" id="account-password" placeholder="Nhập mật khẩu"> 
+                </div>
+
+                <div class="form-group">
+                    <label for="account-email">Email</label>
+                    <input type="text" id="account-email" > 
+                </div>
+                <button type="submit" class="submit-btn" id="account-submit-btn">Add account</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="importForm" class="frm">
+        <div class="close-frm">
+            <button id="close-import-frm-btn" class="closef" aria-label="close form">&times;</button>
+            <h2 id="import-form-title">Thêm Phiếu Nhập Hàng</h2>
+            <form id="import-frm">
+                
+                <div class="form-group">
+                    <label for="import-date">Ngày Nhập:</label>
+                    <input type="date" id="import-date" required>
+                </div>
+
+                <hr>
+                <h3>Thêm sản phẩm vào phiếu:</h3>
+                
+                <div class="form-group">
+                    <label for="import-product-search">Tìm Sản Phẩm:</label>
+                    <input type="text" id="import-product-search" placeholder="Gõ để tìm kiếm sản phẩm...">
+                </div>
+
+                <div class="form-group">
+                    <label for="import-product-select">Chọn Sản Phẩm:</label>
+                    <select id="import-product-select" style="width: 100%; padding: 5px;"></select>
+                </div>
+                
+                <div >
+                    <div class="form-group" >
+                        <label for="import-product-quantity">Số Lượng:</label>
+                        <input type="number" id="import-product-quantity" min="1" value="1">
+                    </div>
+                    <div class="form-group" >
+                        <label for="import-product-price">Giá Nhập (cho 1 sp):</label>
+                        <input type="number" id="import-product-price" min="0" value="0">
+                    </div>
+                </div>
+                <button type="button" id="add-product-to-slip-btn" class="submit-btn" >Thêm vào phiếu</button>
+                <hr>
+
+                <h3>Các sản phẩm trong phiếu:</h3>
+                <table class="slip-products-table">
+                    <thead>
+                        <tr>
+                            <th>Sản Phẩm</th>
+                            <th>SL</th>
+                            <th>Giá Nhập</th>
+                            <th>Xóa</th>
+                        </tr>
+                    </thead>
+                    <tbody id="slip-products-tbody">
+                        </tbody>
+                </table>
+                
+                <button type="submit" class="submit-btn" id="save-import-slip-btn">Lưu Phiếu Nhập</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="viewImportModal" class="modal-overlay">
+        <div class="modal-content">
+            <h2 id="view-imp-title">Chi tiết Phiếu Nhập #...</h2>
+            
+            <div id="view-slip-details" style="margin-bottom: 15px; border-bottom: 1px solid #ccc; padding-bottom: 10px;">
+                <p><strong>Ngày nhập:</strong> ...</p>
+                <p><strong>Trạng thái:</strong> ...</p>
+            </div>
+
+            <table class="slip-products-table"> <thead>
+                    <tr>
+                        <th>Tên sản phẩm</th>
+                        <th>Danh mục</th>
+                        <th>Số lượng</th>
+                        <th>Giá nhập</th>
+                    </tr>
+                </thead>
+                <tbody id="view-slip-products-tbody">
+                    </tbody>
+            </table>
+            
+            <div style="text-align: right; margin-top: 20px;">
+                <button type="button" id="close-view-slip-btn-footer" class="cancel-btn">Đóng</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="viewOrderModal" class="modal-overlay"> 
+        <div class="modal-content">
+            <h2 id="view-order-title">Chi tiết Đơn Hàng #...</h2> 
+            
+            <div id="view-order-details" style="margin-bottom: 15px; border-bottom: 1px solid #ccc; padding-bottom: 10px;">
+                </div>
+
+            <table class="slip-products-table"> 
+                <thead>
+                    <tr>
+                        <th>Tên sản phẩm</th>
+                        <th>Số lượng</th>
+                        <th>Giá (tại thời điểm)</th>
+                    </tr>
+                </thead>
+                <tbody id="view-order-products-tbody"> 
+                    </tbody>
+            </table>
+            
+            <div style="text-align: right; margin-top: 20px;">
+                <button type="button" id="close-view-order-btn-footer" class="cancel-btn">Đóng</button> 
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>

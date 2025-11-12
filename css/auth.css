@@ -1,0 +1,274 @@
+body {
+  background: #94920f;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Wrapper để đặt container bên dưới navbar */
+.auth-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.container {
+  position: relative;
+  width: 800px;
+  height: 500px;
+  background: #fff;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+  overflow: hidden;
+  border-radius: 10px;
+  display: flex;
+}
+
+/* Form panels */
+.form-panel {
+  width: 50%;
+  padding: 40px;
+  transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  position: absolute;
+  top: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#login-panel {
+  left: 0;
+  z-index: 2;
+  opacity: 1;
+  visibility: visible;
+}
+
+#signup-panel {
+  transform: translateX(100%);
+  left: 50%;
+  z-index: 1;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.form-panel h2 {
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 28px;
+}
+
+/* Overlay panel - Phần xanh lá */
+.overlay-panel {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  right: 0;
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  color: white;
+  transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  z-index: 3;
+}
+
+.overlay-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  text-align: center;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.overlay-content h2 {
+  margin-bottom: 15px;
+  font-size: 32px;
+}
+
+.overlay-content p {
+  margin-bottom: 25px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.toggle-btn {
+  padding: 12px 40px;
+  background: white;
+  color: #28a745;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.toggle-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+/* Active state - Khi chuyển sang Sign Up */
+.container.active #login-panel {
+  transform: translateX(-100%);
+  z-index: 1;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.container.active #signup-panel {
+  transform: translateX(0%);
+  z-index: 2;
+  opacity: 1;
+  visibility: visible;
+}
+
+.container.active .overlay-panel {
+  transform: translateX(-100%);
+}
+
+/* Input styling */
+form input {
+  padding: 12px 15px;
+  margin: 8px 0;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+  transition: border-color 0.3s;
+}
+
+form input:focus {
+  outline: none;
+  border-color: #28a745;
+}
+
+form button {
+  padding: 12px;
+  width: 100%;
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 15px;
+  font-size: 16px;
+  transition: background 0.3s;
+}
+
+form button:hover {
+  background: #218838;
+}
+
+.message {
+  margin-top: 15px;
+  font-size: 0.9em;
+  text-align: center;
+}
+
+/* ===== RESPONSIVE MOBILE ===== */
+@media screen and (max-width: 768px) {
+  .auth-wrapper {
+    padding: 10px;
+  }
+
+  .container {
+    width: 100%;
+    height: auto;
+    min-height: 550px;
+    flex-direction: column;
+  }
+
+  /* Panel xanh CỐ ĐỊNH Ở TRÊN */
+  .overlay-panel {
+    position: absolute;
+    width: 100%;
+    height: 35%;
+    top: 0;
+    left: 0;
+    right: auto;
+    bottom: auto;
+    background: linear-gradient(180deg, #28a745 0%, #20c997 100%);
+    color: white;
+    transition: none;
+    transform: none !important;
+    z-index: 3;
+  }
+
+  .overlay-content {
+    padding: 20px;
+  }
+
+  .overlay-content h2 {
+    font-size: 24px;
+  }
+
+  .overlay-content p {
+    font-size: 14px;
+    margin-bottom: 15px;
+  }
+
+  .toggle-btn {
+    padding: 10px 30px;
+    font-size: 15px;
+  }
+
+  /* Form panels - Trượt ngang bên dưới panel xanh */
+  .form-panel {
+    width: 100%;
+    height: 65%;
+    top: 35%;
+    left: 0;
+    padding: 30px;
+    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    position: absolute;
+  }
+
+  /* Login panel mặc định */
+  #login-panel {
+    transform: translateX(0%);
+    z-index: 2;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Signup panel mặc định nằm bên phải */
+  #signup-panel {
+    transform: translateX(100%);
+    z-index: 1;
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  /* Khi active (chuyển sang Sign Up) */
+  .container.active #login-panel {
+    transform: translateX(-100%);
+    z-index: 1;
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .container.active #signup-panel {
+    transform: translateX(-50%);
+    z-index: 2;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .form-panel h2 {
+    font-size: 24px;
+  }
+
+  form input {
+    padding: 10px 12px;
+    margin: 6px 0;
+    font-size: 14px;
+  }
+
+  form button {
+    padding: 10px;
+    font-size: 15px;
+  }
+}
