@@ -891,10 +891,11 @@ function renderImportsTable(page = 1) {
     //  Lọc
     const filteredSlips = importSlips.filter(slip => {
         const productNamesString = slip.products.map(p => p.name).join(', ').toLowerCase();
-        
+        const dateObj = new Date(slip.importDate);
+        const dateStr = dateObj.toLocaleDateString('vi-VN') + ' ' + dateObj.toLocaleTimeString('vi-VN', {hour: '2-digit', minute:'2-digit'});
         return (
             slip.id.toString().includes(searchTerm) ||
-            slip.importDate.includes(searchTerm) ||
+            dateStr.includes(searchTerm) ||
             productNamesString.includes(searchTerm)
         );
     });
@@ -915,9 +916,11 @@ function renderImportsTable(page = 1) {
             const productNamesString = slip.products.map(p => p.name).join(', ');
             const totalProducts = slip.products.reduce((sum, p) => sum + p.quantity, 0);
 
+            const dateObj = new Date(slip.importDate);
+            const dateStr = dateObj.toLocaleDateString('vi-VN') + ' ' + dateObj.toLocaleTimeString('vi-VN', {hour: '2-digit', minute:'2-digit'});
             tr.innerHTML = `
                 <td>${slip.id}</td>
-                <td>${slip.importDate}</td>
+                <td>${dateStr}</td>
                 <td style="color: ${isCompleted ? '#90EE90' : '#FFD700'}; font-weight: bold;">
                     ${isCompleted ? 'Đã hoàn thành' : 'Đang xử lý'}
                 </td>

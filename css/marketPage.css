@@ -1280,7 +1280,7 @@
 
 /* 🖼️ CỘT ẢNH SẢN PHẨM (BÊN TRÁI) */
 .product-image {
-   width: 250px;
+   width: 300px;
   height: 400px;
 
   /* 2. (Tùy chọn) Thêm viền hoặc nền cho đẹp */
@@ -1292,13 +1292,11 @@
 }
 
 .product-image img {
-   /* 4. Bắt ảnh phải lấp đầy 100% kích thước của khung */
+  
   width: 100%;
   height: 100%;
 
-  /* 5. PHÉP THUẬT NẰM Ở ĐÂY:
-     - 'cover': Phóng to/thu nhỏ để lấp đầy khung, phần thừa bị cắt.
-  */
+ 
   object-fit: cover; 
 }
 
@@ -1353,8 +1351,8 @@
     line-height: 1.6;
     
     padding: 10px;
-    text-align: right;
-    margin-right: -50px;
+    text-align: center;
+    margin-left: 240px;
 }
 
 /* KHU VỰC ĐIỀU KHIỂN SỐ LƯỢNG */
@@ -1984,8 +1982,8 @@
 }
 
 .order-books-grid {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     flex-direction: row;
     gap: 15px;
     padding: 10px 0;
@@ -1993,7 +1991,6 @@
 
 
 .book-card-large {
-    width: 49%;
     display: flex;
     align-items: flex-start; 
     gap: 15px;
